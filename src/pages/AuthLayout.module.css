@@ -1,0 +1,212 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.imageSection {
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+  flex: none;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+  
+  .imageSection {
+    height: auto;
+    flex: 1;
+  }
+}
+
+.formSection {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #ffffff;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 480px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #6b7280;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: #164e1c;
+  box-shadow: 0 0 0 1px #164e1c;
+}
+
+.passwordInput {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordInput input {
+  padding-right: 40px;
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 16px;
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.forgotPassword {
+  text-align: right;
+  margin-top: -4px;
+}
+
+.forgotPassword a {
+  color: #4b5563;
+  font-size: 13px;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.forgotPassword a:hover {
+  color: #111827;
+}
+
+.submitBtn {
+  background-color: #1a4f15;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.submitBtn:hover {
+  background-color: #12370e;
+}
+
+.submitBtn:active {
+  transform: scale(0.98);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 32px 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.divider span {
+  padding: 0 16px;
+}
+
+.toggleText {
+  text-align: center;
+  font-size: 14px;
+  color: #4b5563;
+  margin-top: 16px;
+}
+
+.toggleBtn {
+  background: none;
+  border: none;
+  color: #4f46e5;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.toggleBtn:hover {
+  color: #4338ca;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .formSection {
+    padding: 1.5rem;
+  }
+}

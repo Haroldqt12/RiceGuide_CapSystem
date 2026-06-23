@@ -1,0 +1,38 @@
+/* App Layout */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.main-content {
+  margin-top: 70px;
+  flex: 1;
+  padding: 30px;
+  max-width: 100%;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: 60px;
+    padding: 15px;
+  }
+}
+
+/* Responsive adjustments for tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main-content {
+    padding: 25px;
+  }
+}
+
+/* Responsive adjustments for desktop */
+@media (min-width: 1025px) {
+  .main-content {
+    max-width: 1400px;
+    margin: 70px auto 0;
+    width: 100%;
+  }
+}
