@@ -1,7 +1,6 @@
-import React from "react";
-import "../../design/WelcomeBanner.css";
+import React from 'react'
 
-export const WelcomeBanner = () => {
+const WelcomeBanner: React.FC = () => {
   return (
     <section className="welcome-banner">
       <div>
@@ -9,7 +8,7 @@ export const WelcomeBanner = () => {
         <p>Here's what's happening on your farm today.</p>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default WelcomeBanner;
+export default WelcomeBanner  

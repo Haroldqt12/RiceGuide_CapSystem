@@ -1,5 +1,5 @@
 import React from "react";
-import { TopNavbar } from "./TopNavbar";
+import TopNavbar from "./common/TopNavbar";
 import "../design/Layout.css";
 
 interface LayoutProps {
@@ -9,7 +9,7 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="app-layout">
-      <TopNavbar />
+      <TopNavbar onMenuClick={() => {}} />
       <main className="main-content">
         {children}
       </main>

@@ -1,0 +1,35 @@
+
+
+/* Mobile sidebar toggle */
+@media (max-width: 767px) {
+    .sidebar--open {
+        display: flex !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1000;
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+        width: 220px;
+    }
+
+    .sidebar--open .sidebar__logo span,
+    .sidebar--open .sidebar__nav a span.label,
+    .sidebar--open .sidebar__weather {
+        display: flex;
+    }
+
+    .sidebar--open .sidebar__nav a {
+        justify-content: flex-start;
+        padding: 10px 12px;
+    }
+
+    .sidebar--open .sidebar__nav .badge {
+        position: static;
+        margin-left: auto;
+    }
+
+    .sidebar--open .sidebar__weather {
+        display: flex;
+    }
+}

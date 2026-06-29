@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import { HomeIcon, ActivitiesIcon, PlusIcon, CalendarIcon, SettingsIcon } from "../layouts/icons";
 import "../design/BottomNavbar.css";
