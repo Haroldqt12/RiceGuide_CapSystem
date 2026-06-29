@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RiceGuide — Dashboard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <img src="RiceGuide.png" alt="RiceGuide logo">
+      <span>RiceGuide</span>
+    </div>
+
+    <ul class="sidebar__nav">
+      <li><a href="#" class="active"><i class="icon fa-solid fa-grip"></i><span class="label">Dashboard</span></a></li>
+      <li><a href="#"><i class="icon fa-solid fa-seedling"></i><span class="label">Farm Overview</span></a></li>
+      <li><a href="#"><i class="icon fa-solid fa-leaf"></i><span class="label">Crop Monitoring</span></a></li>
+      <li><a href="#"><i class="icon fa-solid fa-list-check"></i><span class="label">Farm Activities</span></a></li>
+      <li><a href="#"><i class="icon fa-solid fa-cloud-sun"></i><span class="label">Weather Forecast</span></a></li>
+      <li><a href="#"><i class="icon fa-solid fa-robot"></i><span class="label">AI Rice Assistant</span></a></li>
+      <li><a href="#"><i class="icon fa-solid fa-chart-line"></i><span class="label">Reports &amp; Analytics</span></a></li>
+      <li><a href="#"><i class="icon fa-solid fa-bell"></i><span class="label">Notifications</span><span class="badge">3</span></a></li>
+      <li><a href="#"><i class="icon fa-solid fa-gear"></i><span class="label">Settings</span></a></li>
+      <li><a href="#"><i class="icon fa-solid fa-user"></i><span class="label">User Profile</span></a></li>
+    </ul>
+
+    <div class="sidebar__weather">
+      <div class="temp">28°C</div>
+      <div class="desc">Partly Cloudy</div>
+      <div class="loc">Brgy. San Isidro, Nueva Ecija</div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+        <h1>Dashboard</h1>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__datetime">
+          <span><i class="fa-regular fa-calendar"></i> Monday, June 22, 2025</span>
+          <span><i class="fa-regular fa-clock"></i> 08:30 AM</span>
+        </div>
+        <div class="topbar__bell">
+          <i class="fa-regular fa-bell"></i>
+          <span class="dot">3</span>
+        </div>
+        <div class="topbar__profile">
+          <img src="https://i.pravatar.cc/72?img=47" alt="Juan Dela Cruz">
+          <div>
+            <div class="name">Juan Dela Cruz</div>
+            <div class="role">Farm Manager</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="content">
+
+      <!-- Welcome banner -->
+      <section class="welcome-banner">
+        <div>
+          <h2>Welcome back, Juan 👋</h2>
+          <p>Here's what's happening on your farm today.</p>
+        </div>
+      </section>
+
+      <!-- Farm Overview -->
+      <div class="section-heading"><h3><i class="fa-solid fa-chart-simple"></i> Farm Overview</h3></div>
+      <div class="overview-grid">
+        <div class="stat-card">
+          <div class="stat-card__icon icon-green"><i class="fa-solid fa-map"></i></div>
+          <div class="stat-card__label">Total Farm Area</div>
+          <div class="stat-card__value">25.6 ha</div>
+          <div class="stat-card__sub">+2.5% from last month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon icon-blue"><i class="fa-solid fa-table-cells"></i></div>
+          <div class="stat-card__label">Active Rice Fields</div>
+          <div class="stat-card__value">12 Fields</div>
+          <div class="stat-card__sub" style="color:var(--color-text-secondary);">2 in preparation</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon icon-gold"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <div class="stat-card__label">Growth Progress</div>
+          <div class="stat-card__value">68%</div>
+          <div class="stat-card__sub" style="color:var(--color-text-secondary);">Average progress</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon icon-good"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div class="stat-card__label">Crop Health Status</div>
+          <div class="stat-card__value">Good</div>
+          <div class="stat-card__sub" style="color:var(--color-text-secondary);">No major issues</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon icon-purple"><i class="fa-solid fa-clipboard-list"></i></div>
+          <div class="stat-card__label">Upcoming Activities</div>
+          <div class="stat-card__value">3 Tasks</div>
+          <div class="stat-card__sub" style="color:var(--color-text-secondary);">Due this week</div>
+        </div>
+      </div>
+
+      <!-- Weather / Crop / AI -->
+      <div class="panel-row">
+
+        <!-- Weather -->
+        <div class="panel">
+          <h4>Weather Monitoring</h4>
+          <div class="weather-now">
+            <div>
+              <div class="weather-now__temp">28°C</div>
+              <div class="weather-now__desc">Partly Cloudy · Feels like 30°C</div>
+            </div>
+            <div class="weather-now__icon"><i class="fa-solid fa-cloud-sun"></i></div>
+          </div>
+          <div class="weather-meta">
+            <span><i class="fa-solid fa-droplet"></i> Rain Probability: 37%</span>
+            <span><i class="fa-solid fa-water"></i> Humidity: 78%</span>
+            <span><i class="fa-solid fa-wind"></i> Wind Speed: 12 km/h</span>
+          </div>
+          <div class="forecast-row">
+            <div class="forecast-day"><div class="d">Tue</div><div class="icon"><i class="fa-solid fa-cloud-sun"></i></div>29°/24°</div>
+            <div class="forecast-day"><div class="d">Wed</div><div class="icon"><i class="fa-solid fa-cloud"></i></div>30°/25°</div>
+            <div class="forecast-day"><div class="d">Thu</div><div class="icon"><i class="fa-solid fa-cloud-sun"></i></div>31°/24°</div>
+            <div class="forecast-day"><div class="d">Fri</div><div class="icon"><i class="fa-solid fa-cloud-sun"></i></div>30°/24°</div>
+            <div class="forecast-day"><div class="d">Sat</div><div class="icon"><i class="fa-solid fa-cloud-rain"></i></div>29°/23°</div>
+          </div>
+        </div>
+
+        <!-- Crop monitoring -->
+        <div class="panel">
+          <h4>Crop Monitoring</h4>
+          <div class="crop-photo"></div>
+          <span class="crop-badge">Vegetative Stage <span class="day">Day 45</span></span>
+          <div class="crop-detail-row"><span>Planting Date</span><span>May 08, 2025</span></div>
+          <div class="crop-detail-row"><span>Expected Harvest</span><span>Sep 10, 2025</span></div>
+          <div class="crop-detail-row"><span>Variety</span><span>NSIC Rc222</span></div>
+          <div class="crop-detail-row"><span>Field Condition</span><span class="pill-good">Good</span></div>
+          <div class="crop-detail-row" style="border-bottom:none;"><span>Pest Risk</span><span class="pill-low">Low</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:68%;"></div></div>
+          <div class="progress-label"><span>Growth Progress</span><span>68%</span></div>
+        </div>
+
+        <!-- AI assistant -->
+        <div class="panel">
+          <h4>AI Rice Assistant <span style="font-size:11px; color:var(--color-text-secondary); font-weight:400;">— Smart Insights for Your Farm</span></h4>
+
+          <div class="ai-insight">
+            <div class="ai-insight__icon"><i class="fa-solid fa-droplet"></i></div>
+            <div>
+              <p class="ai-insight__title">Irrigation Advisory</p>
+              <p class="ai-insight__desc">Water level is optimal. Maintain current irrigation schedule.</p>
+            </div>
+          </div>
+          <div class="ai-insight">
+            <div class="ai-insight__icon"><i class="fa-solid fa-flask"></i></div>
+            <div>
+              <p class="ai-insight__title">Fertilizer Recommendation</p>
+              <p class="ai-insight__desc">Apply urea fertilizer in 3 days for better tillering.</p>
+            </div>
+          </div>
+          <div class="ai-insight">
+            <div class="ai-insight__icon"><i class="fa-solid fa-bug"></i></div>
+            <div>
+              <p class="ai-insight__title">Pest Alert</p>
+              <p class="ai-insight__desc">Low risk of brown planthopper. Continue monitoring.</p>
+            </div>
+          </div>
+          <div class="ai-insight">
+            <div class="ai-insight__icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div>
+              <p class="ai-insight__title">Weather Alert</p>
+              <p class="ai-insight__desc">Possible rain in 2 days. Prepare drainage systems.</p>
+            </div>
+          </div>
+
+          <a href="#" class="btn-primary">View All Insights</a>
+        </div>
+      </div>
+
+      <!-- Bottom row -->
+      <div class="bottom-row">
+
+        <!-- Farm activities -->
+        <div class="panel">
+          <div class="section-heading" style="margin-bottom:4px;"><h3>Farm Activities</h3></div>
+          <div class="tabs">
+            <span class="active">Recent Activities</span>
+            <span>Irrigation Logs</span>
+            <span>Fertilizer Applications</span>
+            <span>Pest Monitoring</span>
+          </div>
+
+          <div class="activity-row">
+            <div class="activity-row__icon"><i class="fa-solid fa-droplet"></i></div>
+            <div>
+              <div class="activity-row__title">Irrigation</div>
+              <div class="activity-row__meta">Field 3A · 2.5 ha · May 22, 2025 — 6:00 AM</div>
+            </div>
+            <span class="activity-row__status status-done">Completed</span>
+          </div>
+          <div class="activity-row">
+            <div class="activity-row__icon"><i class="fa-solid fa-flask"></i></div>
+            <div>
+              <div class="activity-row__title">Fertilizer Application</div>
+              <div class="activity-row__meta">Field 5B · 3.2 ha · May 21, 2025 — 8:00 AM</div>
+            </div>
+            <span class="activity-row__status status-done">Completed</span>
+          </div>
+          <div class="activity-row">
+            <div class="activity-row__icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div>
+              <div class="activity-row__title">Pest Scouting</div>
+              <div class="activity-row__meta">Field 2A · 1.8 ha · May 21, 2025 — 7:00 AM</div>
+            </div>
+            <span class="activity-row__status status-issue">No Issues</span>
+          </div>
+          <div class="activity-row">
+            <div class="activity-row__icon"><i class="fa-solid fa-leaf"></i></div>
+            <div>
+              <div class="activity-row__title">Weed Control</div>
+              <div class="activity-row__meta">Field 1C · 2.1 ha · May 20, 2025 — 6:30 AM</div>
+            </div>
+            <span class="activity-row__status status-done">Completed</span>
+          </div>
+
+          <a href="#" style="display:block; text-align:center; margin-top:12px; font-size:13px; color:var(--color-primary-700); font-weight:600; text-decoration:none;">View All Activities</a>
+        </div>
+
+        <!-- Reports -->
+        <div class="panel">
+          <div class="section-heading" style="margin-bottom:4px;"><h3>Reports &amp; Analytics</h3></div>
+
+          <div class="report-mini-grid">
+            <div class="report-mini">
+              <div class="report-mini__label">Estimated Yield</div>
+              <div class="report-mini__value">6.2 tons/ha</div>
+              <div class="report-mini__sub">+8.5% vs last season</div>
+            </div>
+            <div class="report-mini">
+              <div class="report-mini__label">Total Production</div>
+              <div class="report-mini__value">158.7 tons</div>
+              <div class="report-mini__sub">+12.3% vs last season</div>
+            </div>
+            <div class="report-mini">
+              <div class="report-mini__label">Water Usage</div>
+              <div class="report-mini__value">1,250 m³</div>
+              <div class="report-mini__sub" style="color:var(--color-danger);">-5.2% vs last month</div>
+            </div>
+            <div class="report-mini">
+              <div class="report-mini__label">Fertilizer Usage</div>
+              <div class="report-mini__value">320 kg/ha</div>
+              <div class="report-mini__sub" style="color:var(--color-danger);">-3.1% vs last month</div>
+            </div>
+          </div>
+
+          <div class="section-heading" style="margin-bottom:8px;"><h3 style="font-size:13px;">Yield Trend (tons/ha)</h3></div>
+          <div class="chart-wrap">
+            <svg viewBox="0 0 320 130" preserveAspectRatio="none">
+              <polyline fill="none" stroke="#4CAF50" stroke-width="2.5"
+                points="0,90 27,75 54,82 80,55 107,60 134,40 160,48 187,30 214,15 240,20 267,25 293,5" />
+              <circle cx="293" cy="5" r="4" fill="#2E7D32" />
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Mobile bottom nav -->
+<nav class="bottom-nav">
+  <a href="#" class="active"><span class="icon"><i class="fa-solid fa-house"></i></span>Home</a>
+  <a href="#"><span class="icon"><i class="fa-solid fa-table-cells"></i></span>Fields</a>
+  <span class="fab"><i class="fa-solid fa-plus"></i></span>
+  <a href="#"><span class="icon"><i class="fa-solid fa-list-check"></i></span>Activities</a>
+  <a href="#"><span class="icon"><i class="fa-solid fa-chart-line"></i></span>Reports</a>
+</nav>
+
+<script>
+  // Placeholder: on mobile, menu toggle currently just demonstrates intent.
+  // Hook this up to a real off-canvas sidebar drawer when wiring to React.
+  document.getElementById('menuToggle')?.addEventListener('click', () => {
+    alert('Mobile sidebar drawer goes here — wire this up once we move to React/Vite.');
+  });
+</script>
+
+</body>
+</html>
