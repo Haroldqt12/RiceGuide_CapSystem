@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import riceGuideLogo from '../../assets/img/RiceGuide.png'
 
 interface SidebarProps {
   open: boolean
@@ -26,7 +27,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open }) => {
   return (
     <aside className={`sidebar ${open ? 'sidebar--open' : ''}`}>
       <div className="sidebar__logo">
-        <img src="/RiceGuide.png" alt="RiceGuide logo" />
+        <img src={riceGuideLogo} alt="RiceGuide logo" />
         <span>RiceGuide</span>
       </div>
 

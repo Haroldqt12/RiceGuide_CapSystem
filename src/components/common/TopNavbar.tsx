@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import riceGuideLogo from '../../assets/img/RiceGuide.png'
 
 interface TopbarProps {
   onMenuClick: () => void
@@ -57,7 +58,7 @@ const TopNavbar: React.FC<TopbarProps> = ({ onMenuClick, pageTitle = 'Dashboard'
         <h1 className="topbar__title-desktop">{pageTitle}</h1>
         {/* Mobile: show brand logo + name instead of page title */}
         <div className="topbar__brand">
-          <img src="/RiceGuide.png" alt="RiceGuide logo" className="topbar__brand-logo" />
+          <img src={riceGuideLogo} alt="RiceGuide logo" className="topbar__brand-logo" />
           <span className="topbar__brand-name">RiceGuide</span>
         </div>
       </div>
