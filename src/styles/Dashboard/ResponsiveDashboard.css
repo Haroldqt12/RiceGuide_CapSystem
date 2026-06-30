@@ -574,79 +574,13 @@
   margin-left: var(--sidebar-w);
 }
 
-/* Bottom navigation for mobile */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 1000;
-}
-
-.dashboard-container.mobile .bottom-nav {
-  display: flex;
-}
-
-.dashboard-container.tablet .bottom-nav,
-.dashboard-container.desktop .bottom-nav {
-  display: none;
-}
-
-.bottom-nav a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  font-size: 10px;
-}
-
-.bottom-nav a.active {
-  color: var(--color-primary-700);
-}
-
-.bottom-nav .icon {
-  font-size: 20px;
-}
-
-/* FAB button */
-.fab {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 56px;
-  height: 56px;
-  background: var(--color-primary-700);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  z-index: 1000;
-  cursor: pointer;
-}
-
-.dashboard-container.mobile .fab {
-  display: flex;
-}
-
-.dashboard-container.tablet .fab,
-.dashboard-container.desktop .fab {
-  display: none;
-}
+/* Bottom navigation and FAB styles are now in global.css
+   which handles responsive behavior via media queries.
+   Removing duplicate rules that relied on .dashboard-container wrapper. */
 
 /* Hide elements that don't need to be shown on mobile */
-.dashboard-container.mobile .hide-on-mobile {
-  display: none;
+@media (max-width: 767px) {
+  .hide-on-mobile { display: none; }
 }
 
 /* Show elements that are only for desktop */

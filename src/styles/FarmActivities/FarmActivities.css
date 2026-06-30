@@ -1,0 +1,182 @@
+/* ============================================
+   Farm Activities Page
+   ============================================ */
+
+/* Page section */
+.page-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-heading h3 {
+  font-size: 16px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-primary);
+}
+
+/* Card base */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 18px;
+}
+
+/* Form */
+.activity-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-row label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+.form-row input[type="text"],
+.form-row input[type="file"],
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-button);
+  font-size: 13px;
+  font-family: inherit;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-row textarea { resize: vertical; min-height: 80px; }
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+.form-row input[readonly] { background: var(--color-bg); color: var(--color-text-secondary); }
+.muted { color: var(--color-text-secondary); font-size: 11px; }
+
+/* Issue grid */
+.issue-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.issue-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.issue-chip:hover {
+  border-color: var(--color-primary-500);
+  color: var(--color-primary-700);
+}
+.issue-chip.selected {
+  background: var(--color-primary-100);
+  border-color: var(--color-primary-500);
+  color: var(--color-primary-700);
+  font-weight: 600;
+}
+.issue-chip input { display: none; }
+
+/* Buttons */
+.btn-primary {
+  background: var(--color-primary-700);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: var(--radius-button);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.btn-primary:hover { background: var(--color-primary-800); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-primary-700);
+  border: 1px solid var(--color-border);
+  padding: 10px 18px;
+  border-radius: var(--radius-button);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.btn-ghost:hover { background: var(--color-primary-100); }
+
+/* Logs list */
+.logs-list {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 8px 18px;
+}
+.log-row {
+  display: flex;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+}
+.log-row:last-child { border-bottom: none; }
+.log-date {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  min-width: 110px;
+  flex-shrink: 0;
+}
+.log-body {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.log-what {
+  font-size: 13px;
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 767px) {
+  .activity-form { gap: 12px; }
+  .log-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .log-date { min-width: auto; }
+  .log-body { width: 100%; }
+  .issue-chip { font-size: 11px; padding: 5px 10px; }
+}

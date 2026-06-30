@@ -18,13 +18,13 @@ const StatCard: React.FC<StatCardProps> = ({ iconClass, label, value, sub, subCo
   // green is default
 
   return (
-    <div className="stat-card">
+    <div className="stat-card p-3 md:p-4">
       <div className={`stat-card__icon ${iconClass}`}>
         <i className={icon}></i>
       </div>
-      <div className="stat-card__label">{label}</div>
-      <div className="stat-card__value">{value}</div>
-      <div className="stat-card__sub" style={{ color: subColor || 'var(--color-primary-500)' }}>
+      <div className="stat-card__label text-[11px] md:text-xs">{label}</div>
+      <div className="stat-card__value text-lg md:text-xl lg:text-2xl">{value}</div>
+      <div className="stat-card__sub text-[10px] md:text-xs" style={{ color: subColor || 'var(--color-primary-500)' }}>
         {sub}
       </div>
     </div>

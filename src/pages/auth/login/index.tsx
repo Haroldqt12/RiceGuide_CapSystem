@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import styles from '../../../assets/styles/login_register/AuthLayout.module.css';
+import styles from '../../../styles/auth/AuthLayout.module.css';
 import farmingBg from '../../../assets/img/FarmingBackground.png';
 import riceGuideLogo from '../../../assets/img/RiceGuide.png';
 

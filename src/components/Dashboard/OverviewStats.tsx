@@ -15,7 +15,12 @@ const OverviewStats: React.FC = () => {
       <div className="section-heading">
         <h3><i className="fa-solid fa-chart-simple"></i> Farm Overview</h3>
       </div>
-      <div className="overview-grid">
+      {/* overview-grid:
+          Mobile: 2 cols
+          Tablet: 3 cols
+          Desktop: 5 cols
+      */}
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-4 mb-6">
         {stats.map((s, i) => (
           <StatCard key={i} {...s} />
         ))}

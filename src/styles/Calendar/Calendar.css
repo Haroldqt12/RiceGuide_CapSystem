@@ -1,0 +1,193 @@
+/* ============================================
+   Calendar Page
+   ============================================ */
+
+/* Page section */
+.page-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Header */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.calendar-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-text-primary);
+  flex: 1;
+  text-align: center;
+}
+
+/* Buttons */
+.btn-ghost {
+  background: transparent;
+  color: var(--color-primary-700);
+  border: 1px solid var(--color-border);
+  padding: 8px 14px;
+  border-radius: var(--radius-button);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s ease;
+}
+.btn-ghost:hover { background: var(--color-primary-100); }
+
+/* Legend */
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 10px 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 14px;
+  box-shadow: var(--shadow-card);
+}
+
+.calendar-weekday {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 6px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.calendar-cell {
+  aspect-ratio: 1;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 4px;
+  position: relative;
+  font-family: inherit;
+}
+.calendar-cell:hover:not(.empty):not(:disabled) {
+  background: var(--color-primary-100);
+  border-color: var(--color-primary-300);
+}
+.calendar-cell.empty {
+  cursor: default;
+  background: transparent;
+  border: none;
+}
+.calendar-cell.today {
+  background: var(--color-primary-100);
+  border-color: var(--color-primary-500);
+  font-weight: 700;
+  color: var(--color-primary-700);
+}
+.calendar-cell.selected {
+  background: var(--color-primary-700);
+  color: #fff;
+  border-color: var(--color-primary-700);
+}
+.calendar-day {
+  font-size: 13px;
+  line-height: 1;
+}
+.calendar-marks {
+  display: flex;
+  gap: 3px;
+  margin-top: 4px;
+  justify-content: center;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-log { background: #4CAF50; }
+.dot-stage { background: #FFC107; }
+.dot-task { background: #2196F3; }
+.dot-risk { background: #F44336; }
+
+/* Day detail card */
+.day-detail {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 18px;
+}
+.day-detail__head {
+  font-size: 15px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+.day-detail__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.day-detail__list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 767px) {
+  .calendar-header { gap: 8px; }
+  .calendar-header h2 { font-size: 16px; }
+  .calendar-grid { padding: 10px; gap: 4px; }
+  .calendar-weekday { font-size: 10px; padding: 4px 0; }
+  .calendar-cell { font-size: 11px; }
+  .calendar-day { font-size: 11px; }
+  .calendar-marks { gap: 2px; margin-top: 2px; }
+  .dot { width: 4px; height: 4px; }
+  .calendar-legend { gap: 8px; font-size: 11px; padding: 8px 10px; }
+}

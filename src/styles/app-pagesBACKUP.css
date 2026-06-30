@@ -1,0 +1,439 @@
+/* ============================================
+   Shared Page Section Styles
+   Used by: CropMonitoring, WeatherForecast,
+            FarmActivities, Calendar, AiRiceAssistant
+   ============================================ */
+
+.page-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-heading h3 {
+  font-size: 16px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Cards */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 18px;
+}
+
+.muted { color: var(--color-text-secondary); font-size: 12px; }
+
+/* Buttons */
+.btn-primary {
+  background: var(--color-primary-700);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-primary:hover { background: var(--color-primary-500); }
+
+.btn-ghost {
+  background: var(--color-surface);
+  color: var(--color-primary-700);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-ghost:hover { background: var(--color-bg); }
+
+/* Tabs (shared) */
+.tabs {
+  display: flex;
+  gap: 18px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.tabs span {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+.tabs span.active {
+  color: var(--color-primary-700);
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-primary-700);
+}
+
+/* Pills (status) */
+.pill-active,
+.pill-active-sm,
+.pill-info,
+.pill-warn {
+  display: inline-block;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+}
+.pill-active { background: var(--color-primary-500); color: #fff; }
+.pill-active-sm { background: var(--color-primary-700); color: #fff; }
+.pill-info { background: var(--color-info-light); color: var(--color-info); }
+.pill-warn { background: var(--color-accent-gold-light); color: #8a6d00; display: inline-flex; align-items: center; gap: 4px; }
+
+/* ============================================
+   Crop Monitoring
+   ============================================ */
+.crop-summary__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.crop-summary__stage { font-size: 18px; font-weight: 700; }
+.crop-summary__date { font-size: 12px; color: var(--color-text-secondary); }
+
+.progress-track { background: #EDEFEA; border-radius: var(--radius-pill); height: 8px; overflow: hidden; }
+.progress-fill { background: linear-gradient(90deg, var(--color-primary-500), var(--color-primary-300)); height: 100%; border-radius: var(--radius-pill); }
+.progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--color-text-secondary); margin-top: 6px; }
+
+.stage-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 18px;
+  box-shadow: var(--shadow-card);
+}
+.stage-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 8px;
+  border-left: 3px solid var(--color-border);
+  margin-left: 6px;
+  position: relative;
+}
+.stage-item.stage-done { border-color: var(--color-primary-500); opacity: 0.85; }
+.stage-item.stage-active { border-color: var(--color-accent-gold); background: var(--color-accent-gold-light); border-radius: 8px; }
+.stage-item.stage-upcoming { border-color: var(--color-border); opacity: 0.55; }
+.stage-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary-500);
+  margin-left: -12px;
+}
+.stage-item.stage-upcoming .stage-dot { background: var(--color-border); }
+.stage-item.stage-active .stage-dot { background: var(--color-accent-gold); }
+.stage-name { font-size: 14px; font-weight: 600; }
+.stage-days { font-size: 11px; color: var(--color-text-secondary); }
+
+.logs-list {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 8px 18px;
+}
+.log-row {
+  display: flex;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.log-row:last-child { border-bottom: none; }
+.log-date { font-size: 12px; color: var(--color-text-secondary); min-width: 110px; }
+.log-body { flex: 1; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.log-what { font-size: 13px; }
+
+/* ============================================
+   Weather Forecast
+   ============================================ */
+.advisory-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--color-info-light);
+  color: var(--color-info);
+  border-radius: var(--radius-card);
+  border-left: 4px solid var(--color-info);
+  font-size: 13px;
+}
+
+.weather-card { padding: 0; }
+.weather-now { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.weather-now__temp { font-size: 30px; font-weight: 700; }
+.weather-now__desc { font-size: 12px; color: var(--color-text-secondary); }
+.weather-now__icon { font-size: 34px; color: var(--color-accent-gold); }
+
+.weather-meta {
+  display: flex;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 6px;
+}
+
+.forecast-list {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 8px 18px;
+}
+.forecast-row {
+  display: grid;
+  grid-template-columns: 1fr 30px 90px 1.5fr;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.forecast-row:last-child { border-bottom: none; }
+.forecast-day .d { font-size: 13px; font-weight: 600; }
+.forecast-icon { font-size: 18px; color: var(--color-info); text-align: center; }
+.forecast-temp { font-size: 13px; font-weight: 600; }
+.forecast-meta { display: flex; gap: 12px; font-size: 11px; color: var(--color-text-secondary); }
+
+.cache-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  justify-content: flex-end;
+}
+
+/* ============================================
+   Farm Activities
+   ============================================ */
+.activity-form .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.activity-form label { font-size: 12px; color: var(--color-text-secondary); font-weight: 600; }
+.activity-form input,
+.activity-form select,
+.activity-form textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+.activity-form input:focus,
+.activity-form select:focus,
+.activity-form textarea:focus {
+  outline: 2px solid var(--color-primary-300);
+  outline-offset: 0;
+  border-color: var(--color-primary-500);
+}
+
+.issue-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.issue-chip {
+  padding: 6px 12px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.issue-chip input { display: none; }
+.issue-chip.selected {
+  background: var(--color-primary-700);
+  color: #fff;
+  border-color: var(--color-primary-700);
+}
+
+/* ============================================
+   Calendar
+   ============================================ */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.calendar-header h2 { margin: 0; font-size: 18px; }
+
+.calendar-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  justify-content: center;
+}
+.legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 12px;
+  box-shadow: var(--shadow-card);
+}
+.calendar-weekday {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  padding-bottom: 6px;
+}
+.calendar-cell {
+  background: var(--color-bg);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 6px;
+  min-height: 60px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: inherit;
+}
+.calendar-cell.empty {
+  background: transparent;
+  cursor: default;
+}
+.calendar-cell.today {
+  border-color: var(--color-primary-500);
+  font-weight: 700;
+}
+.calendar-cell.selected {
+  background: var(--color-primary-700);
+  color: #fff;
+}
+.calendar-day { font-size: 12px; }
+.calendar-marks {
+  display: flex;
+  gap: 3px;
+  margin-top: 4px;
+}
+.calendar-marks .dot {
+  width: 6px; height: 6px; border-radius: 50%; display: inline-block;
+}
+.dot-log { background: #4CAF50; }
+.dot-stage { background: #FFC107; }
+.dot-task { background: #2196F3; }
+.dot-risk { background: #F44336; }
+
+.day-detail__head { font-size: 14px; margin-bottom: 12px; }
+.day-detail__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.day-detail__list li { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.day-detail__list .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* ============================================
+   AI Rice Assistant
+   ============================================ */
+.guide-list { display: flex; flex-direction: column; gap: 12px; }
+.guide-card h4 { margin: 0 0 6px; font-size: 14px; color: var(--color-primary-700); }
+.guide-card p { margin: 0; font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+
+.guide-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.chat-wrap {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  height: 60vh;
+  min-height: 380px;
+}
+.chat-stream {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chat-bubble { max-width: 80%; padding: 10px 14px; border-radius: 12px; font-size: 13px; }
+.chat-bubble.chat-user {
+  align-self: flex-end;
+  background: var(--color-primary-700);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.chat-bubble.chat-assistant {
+  align-self: flex-start;
+  background: var(--color-bg);
+  border-bottom-left-radius: 4px;
+}
+.chat-text { line-height: 1.5; }
+.chat-source { font-size: 10px; opacity: 0.7; margin-top: 4px; }
+.chat-input-row {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+.chat-input-row input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--color-surface);
+}
+.chat-input-row input:focus {
+  outline: 2px solid var(--color-primary-300);
+  border-color: var(--color-primary-500);
+}
+
+/* ============================================
+   Responsive for new pages
+   ============================================ */
+@media (max-width: 767px) {
+  .forecast-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .forecast-icon { display: none; }
+  .chat-wrap { height: 65vh; }
+}

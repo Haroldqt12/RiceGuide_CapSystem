@@ -1,0 +1,287 @@
+/* ============================================
+   Weather Forecast Page
+   Responsive: Desktop (≥1024) | Tablet (768–1023) | Mobile (≤767)
+   ============================================ */
+
+/* Farm advisory banner */
+.weather-advisory {
+  background: var(--color-info-light);
+  color: var(--color-info);
+  border-radius: var(--radius-card);
+  border-left: 4px solid var(--color-info);
+  width: 100%;
+}
+
+/* Current weather card */
+.weather-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.weather-card__title {
+  color: var(--color-primary-700);
+  margin: 0 0 12px;
+}
+
+.weather-card__stat {
+  background: var(--color-bg);
+  border-radius: var(--radius-btn);
+  padding: 10px 6px;
+}
+
+.weather-now {
+  width: 100%;
+}
+
+.weather-now__temp {
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.weather-now__desc {
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.weather-meta {
+  color: var(--color-text-secondary);
+}
+
+.weather-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.weather-now__icon {
+  color: var(--color-accent-gold);
+  line-height: 1;
+}
+
+/* 7-day forecast list */
+.forecast-list {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* Forecast row default (mobile-first: stacked) */
+.forecast-row {
+  display: grid;
+  align-items: center;
+  text-align: left;
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.15s ease;
+}
+
+.forecast-row:hover { background: var(--color-bg); }
+
+.forecast-row:last-child { border-bottom: none; }
+
+.forecast-row--today {
+  background: linear-gradient(90deg, var(--color-accent-gold-light), transparent 70%);
+  border-left: 3px solid var(--color-accent-gold);
+}
+
+.forecast-day {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+  text-align: left;
+}
+
+.forecast-day__name {
+  color: var(--color-text-primary);
+}
+
+.forecast-day__badge {
+  display: inline-block;
+  background: var(--color-accent-gold);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  padding: 1px 8px;
+  align-self: flex-start;
+}
+
+.forecast-icon {
+  color: var(--color-info);
+}
+
+.forecast-temp {
+  color: var(--color-text-primary);
+}
+
+.forecast-meta {
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.forecast-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cache-note {
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+   DESKTOP (≥1024px) — 4-column grid
+   ============================================ */
+@media (min-width: 1024px) {
+  .forecast-row {
+    grid-template-columns: 1.4fr 50px 100px 2fr;
+    gap: 16px;
+    padding: 16px 14px;
+    align-items: center;
+  }
+
+  /* Top cards: more horizontal breathing room on desktop */
+  .page-section > .grid.grid-cols-1.lg\:grid-cols-2 {
+    gap: 28px;
+  }
+  .weather-card {
+    padding: 24px;
+  }
+  .weather-card--secondary {
+    padding: 24px;
+  }
+
+  /* Align content inside forecast cells on desktop */
+  .forecast-row .forecast-day {
+    justify-content: center;
+  }
+  .forecast-row .forecast-temp {
+    text-align: left;
+  }
+  .forecast-row .forecast-meta {
+    justify-content: flex-start;
+  }
+}
+
+/* ============================================
+   TABLET (768px – 1023px) — 2-column grid (icon spans 2 rows)
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .forecast-row {
+    grid-template-columns: 1.2fr 50px 2fr;
+    grid-template-rows: auto auto;
+    gap: 14px;
+    padding: 14px 12px;
+    align-items: center;
+  }
+  .forecast-row .forecast-day {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  .forecast-row .forecast-temp {
+    grid-column: 1;
+    grid-row: 2;
+    color: var(--color-text-secondary);
+    text-align: left;
+  }
+  .forecast-row .forecast-icon {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    text-align: center;
+  }
+  .forecast-row .forecast-meta {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    justify-content: flex-start;
+  }
+  .weather-meta {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+  }
+
+  /* Top cards: comfortable tablet padding */
+  .weather-card {
+    padding: 20px;
+  }
+}
+
+/* ============================================
+   MOBILE (<768px) — stacked card layout
+   ============================================ */
+@media (max-width: 767px) {
+  .weather-card { padding: 14px; }
+
+  .weather-now {
+    flex-direction: row;
+    gap: 12px;
+  }
+  .weather-now__temp { font-size: 28px; }
+  .weather-now__icon { font-size: 32px; }
+  .weather-meta {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* Forecast row as a card */
+  .forecast-row {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "day  icon"
+      "temp temp"
+      "meta meta";
+    gap: 6px;
+    padding: 12px;
+    text-align: left;
+  }
+  .forecast-row .forecast-day {
+    grid-area: day;
+    text-align: left;
+    align-items: flex-start;
+  }
+  .forecast-row .forecast-icon {
+    grid-area: icon;
+    text-align: right;
+  }
+  .forecast-row .forecast-temp {
+    grid-area: temp;
+    color: var(--color-primary-700);
+    text-align: left;
+  }
+  .forecast-row .forecast-meta {
+    grid-area: meta;
+    padding-top: 4px;
+    border-top: 1px dashed var(--color-border);
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+
+/* ============================================
+   SMALL PHONES (≤480px)
+   ============================================ */
+@media (max-width: 480px) {
+  .weather-advisory {
+    padding: 12px;
+    font-size: 12px;
+  }
+  .weather-now__temp { font-size: 26px; }
+  .weather-now__icon { font-size: 28px; }
+  .forecast-row { padding: 10px; }
+  .forecast-meta {
+    font-size: 10px;
+  }
+  .forecast-meta span:nth-child(3) {
+    flex-basis: 100%;
+  }
+}
