@@ -39,7 +39,7 @@ const TopNavbar: React.FC<TopbarProps> = ({ onMenuClick, pageTitle = 'Dashboard'
   const handleLogout = () => {
     setMenuOpen(false)
     // Prototype: route back to login (no real auth yet)
-    navigate('/login')
+    navigate('/')
   }
 
   return (

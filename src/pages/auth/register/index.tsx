@@ -76,7 +76,7 @@ const Register = () => {
 
           <p className={styles.toggleText}>
             Already have an account?{' '}
-            <Link to="/login" className={styles.toggleBtn}>
+            <Link to="/" className={styles.toggleBtn}>
               Login
             </Link>
           </p>
