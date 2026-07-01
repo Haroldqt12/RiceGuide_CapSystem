@@ -1,5 +1,10 @@
 import App from './routes/index';
+import { FarmingProvider } from './context/FarmingContext';
 
 export default function Root() {
-  return <App />;
+  return (
+    <FarmingProvider>
+      <App />
+    </FarmingProvider>
+  );
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import AppShell from '../../../layouts/AppShell'
+import { useFarming } from '../../../context/FarmingContext'
 import '../../../styles/AiRiceAssistant/AiRiceAssistant.css'
 
 interface ChatMsg {
@@ -13,24 +14,22 @@ interface LocationState {
   initialPrompt?: string
 }
 
-const WEEKLY_GUIDE = {
-  week: 'Week 8 — Panicle Init',
-  sections: [
-    { title: 'What to Monitor', body: 'Watch for leaf color, tiller count, and any yellowing. Spider mites and brown planthoppers are common this week.' },
-    { title: 'What to Apply', body: 'Apply 25 kg/ha of complete fertilizer (14-14-14) within 3 days. Maintain 2–3 cm standing water.' },
-    { title: 'Weather Advisory', body: 'Heavy rain expected Jul 2–3. Hold off on pesticide spraying and ensure drainage is clear.' },
-    { title: 'Upcoming Tasks', body: 'Pest scouting on Jul 4. Schedule water level check daily at 6 AM and 5 PM.' },
-  ],
-}
-
 const AiRiceAssistant: React.FC = () => {
   const location = useLocation()
   const state = (location.state as LocationState) || {}
 
+  const { currentTask, getWeeklyGuide } = useFarming()
+  const guide = getWeeklyGuide()
+
   const [tab, setTab] = useState<number>(0)
   const [input, setInput] = useState<string>('')
+  
+  const initialGreeting = currentTask 
+    ? `Magandang araw! We are currently on the "${currentTask.name}" stage. Ask me anything about your farm or this specific task.`
+    : `Magandang araw! I'm your AI rice assistant. You haven't started a crop cycle yet. Ask me how to get started!`;
+
   const [messages, setMessages] = useState<ChatMsg[]>([
-    { role: 'assistant', text: 'Magandang araw! I\'m your AI rice assistant. Ask me anything about your farm.', source: 'RiceGuide Knowledge Base' },
+    { role: 'assistant', text: initialGreeting, source: 'RiceGuide Knowledge Base' },
   ])
 
   // When opened from the BottomNav popup with an initial prompt,
@@ -39,7 +38,6 @@ const AiRiceAssistant: React.FC = () => {
     if (state.initialPrompt) {
       setTab(1)
       setInput(state.initialPrompt)
-      // Clear the state so re-navigations don't re-trigger
       window.history.replaceState({}, '')
     }
   }, [state.initialPrompt])
@@ -51,14 +49,20 @@ const AiRiceAssistant: React.FC = () => {
     const userMsg: ChatMsg = { role: 'user', text }
     setMessages((m) => [...m, userMsg])
     setInput('')
-    // Stub response — wire to RAG pipeline later
+    
+    // Context-aware stub response
     setTimeout(() => {
+      let responseText = `(stub) I received: "${text}". RAG pipeline integration is pending.`;
+      if (currentTask && text.toLowerCase().includes('what to do')) {
+        responseText = `Since we are in the ${currentTask.name} stage, you should: ${currentTask.description}`;
+      }
+
       setMessages((m) => [
         ...m,
         {
           role: 'assistant',
-          text: `(stub) I received: "${text}". RAG pipeline integration is pending.`,
-          source: 'Stub',
+          text: responseText,
+          source: 'RiceGuide AI Context',
         },
       ])
     }, 400)
@@ -68,50 +72,33 @@ const AiRiceAssistant: React.FC = () => {
     <AppShell pageTitle="AI Rice Assistant">
       <section className="page-section">
         <div className="section-heading">
-          <h3><i className="fa-solid fa-robot"></i> {WEEKLY_GUIDE.week}</h3>
+          <h3><i className="fa-solid fa-robot"></i> Week {guide.week_number} — {guide.stage}</h3>
         </div>
 
         <div className="tabs">
           <span className={tab === 0 ? 'active' : ''} onClick={() => setTab(0)}>Weekly Guide</span>
-          <span className={tab === 1 ? 'active' : ''} onClick={() => setTab(1)}>Ask RiceGuide</span>
         </div>
 
         {tab === 0 && (
           <div className="guide-list">
-            {WEEKLY_GUIDE.sections.map((s) => (
-              <div className="card guide-card" key={s.title}>
-                <h4>{s.title}</h4>
-                <p>{s.body}</p>
+            {guide.tasks.map((task, idx) => (
+              <div className="card guide-card" key={idx} style={{ borderLeft: task.priority === 'high' ? '4px solid var(--color-danger)' : task.priority === 'low' ? '4px solid var(--color-info)' : '4px solid var(--color-primary-500)' }}>
+                <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  {task.type === 'water' && <i className="fa-solid fa-droplet" style={{ color: 'var(--color-info)' }}></i>}
+                  {task.type === 'pest' && <i className="fa-solid fa-bug" style={{ color: 'var(--color-danger)' }}></i>}
+                  {task.type === 'log' && <i className="fa-solid fa-clipboard-list" style={{ color: 'var(--color-primary-500)' }}></i>}
+                  {task.type === 'observation' && <i className="fa-solid fa-eye" style={{ color: 'var(--color-accent-gold)' }}></i>}
+                  {task.title}
+                </h4>
+                <p style={{ marginTop: '8px', lineHeight: 1.5 }}>{task.description}</p>
               </div>
             ))}
-            <div className="guide-actions">
-              <button className="btn-ghost"><i className="fa-solid fa-download"></i> Download</button>
-              <button className="btn-ghost"><i className="fa-solid fa-share"></i> Share</button>
-            </div>
+
+          
           </div>
         )}
 
-        {tab === 1 && (
-          <div className="chat-wrap">
-            <div className="chat-stream">
-              {messages.map((m, idx) => (
-                <div key={idx} className={`chat-bubble chat-${m.role}`}>
-                  <div className="chat-text">{m.text}</div>
-                  {m.source && <div className="chat-source">Source: {m.source}</div>}
-                </div>
-              ))}
-            </div>
-            <form className="chat-input-row" onSubmit={send}>
-              <input
-                type="text"
-                placeholder="Type a question in English, Filipino, or Bisaya..."
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-              />
-              <button type="submit" className="btn-primary"><i className="fa-solid fa-paper-plane"></i></button>
-            </form>
-          </div>
-        )}
+        
       </section>
     </AppShell>
   )

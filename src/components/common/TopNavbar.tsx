@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import riceGuideLogo from '../../assets/img/RiceGuide.png'
+import { useFarming } from '../../context/FarmingContext'
+import NotificationPanel from './NotificationPanel'
 
 interface TopbarProps {
   onMenuClick: () => void
@@ -9,14 +11,22 @@ interface TopbarProps {
 
 const TopNavbar: React.FC<TopbarProps> = ({ onMenuClick, pageTitle = 'Dashboard' }) => {
   const navigate = useNavigate()
+  const { todayDate, unreadCount } = useFarming()
+  
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
+  const [notifOpen, setNotifOpen] = useState<boolean>(false)
+  
   const menuRef = useRef<HTMLDivElement | null>(null)
+  const notifRef = useRef<HTMLDivElement | null>(null)
 
   // Close dropdown on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setMenuOpen(false)
+      }
+      if (notifRef.current && !notifRef.current.contains(e.target as Node)) {
+        setNotifOpen(false)
       }
     }
     document.addEventListener('mousedown', handler)
@@ -64,13 +74,22 @@ const TopNavbar: React.FC<TopbarProps> = ({ onMenuClick, pageTitle = 'Dashboard'
       </div>
       <div className="topbar__right">
         <div className="topbar__datetime">
-          <span><i className="fa-regular fa-calendar"></i> Monday, June 22, 2026</span>
+          <span><i className="fa-regular fa-calendar"></i> {new Date(todayDate).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</span>
           <span><i className="fa-regular fa-clock"></i> 08:30 AM</span>
         </div>
-        <button type="button" className="topbar__bell" aria-label="Notifications">
-          <i className="fa-regular fa-bell"></i>
-          <span className="dot">3</span>
-        </button>
+        
+        <div style={{ position: 'relative' }} ref={notifRef}>
+          <button 
+            type="button" 
+            className="topbar__bell" 
+            aria-label="Notifications"
+            onClick={() => setNotifOpen(!notifOpen)}
+          >
+            <i className="fa-regular fa-bell"></i>
+            {unreadCount > 0 && <span className="dot">{unreadCount}</span>}
+          </button>
+          {notifOpen && <NotificationPanel onClose={() => setNotifOpen(false)} />}
+        </div>
 
         {/* User dropdown */}
         <div className="topbar__profile" ref={menuRef}>

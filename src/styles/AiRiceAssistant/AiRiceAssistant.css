@@ -96,7 +96,7 @@
 .btn-ghost:hover { background: var(--color-primary-100); }
 
 /* ============================================
-   Chat Tab (Ask RiceGuide)
+  Chat Tab
    ============================================ */
 .chat-wrap {
   display: flex;
